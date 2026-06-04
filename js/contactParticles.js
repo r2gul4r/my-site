@@ -115,6 +115,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
 
+      const addSoftLine = (x1, y1, x2, y2, count) => {
+        for (let i = 0; i < count; i += 1) {
+          const t = (i + 0.5) / count;
+          addPoint(lerp(x1, x2, t), lerp(y1, y2, t));
+        }
+      };
+
+      const addCurve = (x1, y1, cx, cy, x2, y2, count) => {
+        for (let i = 0; i < count; i += 1) {
+          const t = (i + 0.5) / count;
+          const oneMinusT = 1 - t;
+          addPoint(
+            oneMinusT * oneMinusT * x1 + 2 * oneMinusT * t * cx + t * t * x2,
+            oneMinusT * oneMinusT * y1 + 2 * oneMinusT * t * cy + t * t * y2
+          );
+        }
+      };
+
       const addEllipse = (cx, cy, rx, ry, start, end, count) => {
         for (let i = 0; i < count; i += 1) {
           const t = count === 1 ? 0 : i / (count - 1);
@@ -139,16 +157,26 @@ document.addEventListener('DOMContentLoaded', () => {
         addLine(-0.22, 0.42, -0.22, 0.55, 22);
         addLine(0.22, 0.42, 0.22, 0.55, 22);
       } else {
-        addLine(-0.52, -0.33, 0.52, -0.33, 84);
-        addLine(0.52, -0.33, 0.52, 0.34, 66);
-        addLine(0.52, 0.34, -0.52, 0.34, 84);
-        addLine(-0.52, 0.34, -0.52, -0.33, 66);
-        addLine(-0.52, -0.33, -0.22, -0.07, 38);
-        addLine(0.52, -0.33, 0.22, -0.07, 38);
-        addLine(-0.52, 0.34, -0.26, 0.11, 34);
-        addLine(0.52, 0.34, 0.26, 0.11, 34);
-        addEllipse(-0.5, -0.32, 0.035, 0.035, 0, Math.PI * 2, 14);
-        addEllipse(0.5, 0.32, 0.035, 0.035, 0, Math.PI * 2, 14);
+        const left = -0.52;
+        const right = 0.52;
+        const top = -0.31;
+        const bottom = 0.32;
+        const radius = 0.07;
+
+        addSoftLine(left + radius, top, right - radius, top, 68);
+        addSoftLine(right, top + radius, right, bottom - radius, 48);
+        addSoftLine(right - radius, bottom, left + radius, bottom, 68);
+        addSoftLine(left, bottom - radius, left, top + radius, 48);
+
+        addEllipse(left + radius, top + radius, radius, radius, Math.PI, Math.PI * 1.5, 18);
+        addEllipse(right - radius, top + radius, radius, radius, Math.PI * 1.5, Math.PI * 2, 18);
+        addEllipse(right - radius, bottom - radius, radius, radius, 0, Math.PI * 0.5, 18);
+        addEllipse(left + radius, bottom - radius, radius, radius, Math.PI * 0.5, Math.PI, 18);
+
+        addCurve(left + 0.08, top + 0.05, -0.28, -0.12, -0.05, 0.04, 32);
+        addCurve(right - 0.08, top + 0.05, 0.28, -0.12, 0.05, 0.04, 32);
+        addCurve(left + 0.08, bottom - 0.05, -0.28, 0.16, -0.05, 0.04, 30);
+        addCurve(right - 0.08, bottom - 0.05, 0.28, 0.16, 0.05, 0.04, 30);
       }
 
       return points.length ? points : [{ x: centerX, y: centerY }];
