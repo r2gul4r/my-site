@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sungho Lee | AI & Data Automation Full-Stack Developer</title>
+  <meta name="description" content="AI, 데이터 처리, 자동화, 풀스택 개발을 연결하여 실용적인 도구를 만드는 개발자 이성호의 포트폴리오입니다.">
+  
+  <!-- 스타일시트 로드 -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- 다크모드 초기 설정 스크립트 (화면 플리커링 방지용) -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- 스킵 네비게이션 -->
+  <a href="#main-content" class="skip-nav">본문 바로가기</a>
+
+  <!-- 상단 고정 헤더 -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="logo" id="logo-btn">Sungho Lee</div>
+      
+      <nav aria-label="메인 내비게이션">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a class="nav-link active" data-target="hero">Home</a></li>
+          <li><a class="nav-link" data-target="about">About</a></li>
+          <li><a class="nav-link" data-target="focus">Focus</a></li>
+          <li><a class="nav-link" data-target="skills">Skills</a></li>
+          <li><a class="nav-link" data-target="projects">Projects</a></li>
+          <li><a class="nav-link" data-target="lab">Lab</a></li>
+          <li><a class="nav-link" data-target="contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- 다크모드 토글 -->
+        <button class="icon-btn" id="theme-toggle" aria-label="테마 전환">
+          <!-- 해 (라이트모드 시 다크모드로 변경 아이콘) -->
+          <img class="theme-icon sun-icon" src="https://cdn.jsdelivr.net/npm/lucide-static@0.563.0/icons/sun.svg" alt="" aria-hidden="true" style="display:none;">
+          <!-- 달 (다크모드 시 라이트모드로 변경 아이콘) -->
+          <img class="theme-icon moon-icon" src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/moon.svg" alt="" aria-hidden="true">
+        </button>
+
+        <!-- 깃허브 링크 -->
+        <a href="https://github.com/r2gul4r" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub 바로가기">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+
+        <!-- 햄버거 토글 -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="메뉴 토글">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 메인 영역 -->
+  <main id="main-content">
+    
+    <!-- 1. 히어로 섹션 -->
+    <section id="hero">
+      <!-- 오로라 백라이트 조명 -->
+      <div class="aurora-bg">
+        <div class="aurora-sphere aurora-1"></div>
+        <div class="aurora-sphere aurora-2"></div>
+        <div class="aurora-sphere aurora-3"></div>
+      </div>
+      <!-- 인터랙티브 입자 캔버스 배경 -->
+      <canvas id="hero-canvas" class="hero-canvas-bg"></canvas>
+      
+      <div class="container hero-container" style="z-index: var(--z-index-base); position: relative;">
+        <div class="hero-content">
+          <h1 class="hero-title reveal">
+            Building AI-Powered Tools &<br>
+            Interactive Systems
+          </h1>
+          <p class="hero-subtitle reveal">
+            AI, 데이터 처리, 자동화, 풀스택 개발을 연결해 반복적인 문제를 실용적인 도구로 바꾸는 개발자입니다.
+          </p>
+          
+          <div class="hero-buttons reveal">
+            <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View Projects</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact Me</button>
+          </div>
+        </div>
+
+        <!-- 플로팅 상태 카드 그룹 -->
+        <div class="floating-status-container reveal">
+          <div class="status-card">
+            <div class="status-icon">🤖</div>
+            <div class="status-info">
+              <h4>AI Workflow</h4>
+              <p>LLM Orchestration</p>
+            </div>
+          </div>
+          <div class="status-card">
+            <div class="status-icon">⚡</div>
+            <div class="status-info">
+              <h4>Data Pipeline</h4>
+              <p>ETL & Collection</p>
+            </div>
+          </div>
+          <div class="status-card">
+            <div class="status-icon">💻</div>
+            <div class="status-info">
+              <h4>Local Web App</h4>
+              <p>Electron & Desktop Tools</p>
+            </div>
+          </div>
+          <div class="status-card">
+            <div class="status-icon">🌐</div>
+            <div class="status-info">
+              <h4>Full-stack Service</h4>
+              <p>End-to-End System</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. About 섹션 -->
+    <section id="about">
+      <div class="container">
+        <div class="about-wrapper" style="display: flex; gap: var(--spacing-2xl); align-items: center; justify-content: space-between;">
+          <div class="about-text-content reveal" style="flex: 1; max-width: 600px;">
+            <h2>About Me</h2>
+            <p style="margin-top: var(--spacing-lg);">
+              과거 e스포츠 경험을 통해 매 경기마다 쌓이는 방대한 로그와 패턴을 분석하는 데에서 프로그래밍의 매력을 처음 느꼈습니다. 단순히 소비되는 정적 데이터에 생명을 불어넣는 것에 빠져, AI와 데이터 자동화, 그리고 이를 사용자와 연결하는 풀스택 엔지니어링으로 영역을 넓혀왔습니다.
+            </p>
+            <p style="margin-top: var(--spacing-md);">
+              업무나 일상에서 일어나는 비효율과 반복적인 불편함을 발견하면 그냥 지나치지 않습니다. "이것을 자동화할 수 없을까?"라는 질문을 던지며, 기획한 아이디어를 빠르게 메모하고, 즉각 프로토타입으로 제작해 검증하는 실행력을 지니고 있습니다.
+            </p>
+            <p style="margin-top: var(--spacing-md);">
+              AI 모델 파이프라인부터 클라이언트 웹 환경까지 전체 레이어를 관통하는 견고한 아키텍처를 추구합니다.
+            </p>
+          </div>
+
+          <!-- 추상 비주얼 프로필 박스 -->
+          <div class="about-visual-card reveal" style="flex: 1; max-width: 450px; position: relative;">
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border-medium); padding: var(--spacing-xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); position: relative; overflow: hidden;">
+              <div style="width: 60px; height: 60px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: var(--spacing-lg);">⚡</div>
+              <h3 style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">이성호</h3>
+              <p style="font-size: 0.9rem; color: var(--color-primary); font-weight: 600; margin-bottom: var(--spacing-md);">AI/Data Automation Full-stack Developer</p>
+              
+              <hr style="border: 0; border-top: 1px solid var(--border-light); margin-bottom: var(--spacing-md);">
+              
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm); font-size: 0.9rem;">
+                <li style="display: flex; justify-content: space-between;"><span style="color: var(--text-tertiary);">Focus</span><strong>AI Workflow & ETL Pipeline</strong></li>
+                <li style="display: flex; justify-content: space-between;"><span style="color: var(--text-tertiary);">Location</span><strong>Seoul, South Korea</strong></li>
+                <li style="display: flex; justify-content: space-between;"><span style="color: var(--text-tertiary);">GitHub</span><strong>r2gul4r</strong></li>
+                <li style="display: flex; justify-content: space-between;"><span style="color: var(--text-tertiary);">Philosophy</span><strong>"Build practical tools"</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Focus Areas 섹션 -->
+    <section id="focus">
+      <div class="container">
+        <div class="reveal">
+          <h2>Focus Areas</h2>
+          <p style="margin-top: var(--spacing-sm); max-width: 600px;">주로 다음과 같은 기술 및 실무 가치를 극대화하는 것에 집중하고 연구합니다.</p>
+        </div>
+
+        <div class="focus-grid">
+          <div class="focus-card reveal">
+            <h3 style="display: flex; align-items: center; gap: var(--spacing-sm);"><span style="color: var(--color-primary);">01.</span> AI Workflow Design</h3>
+            <p>생성형 AI 모델을 단순 호출하는 단계를 넘어 입력 전처리, 비즈니스 규칙 판단, 검증, 최종 모니터링 화면까지 유기적으로 이어지는 AI 오케스트레이션 흐름을 설계합니다.</p>
+          </div>
+          <div class="focus-card reveal">
+            <h3 style="display: flex; align-items: center; gap: var(--spacing-sm);"><span style="color: var(--color-primary);">02.</span> Data Collection & ETL</h3>
+            <p>공개 웹 데이터의 분산 수집부터 데이터 클렌징, 구조적 정규화, 적재 파이프라인 및 비정형 문서 내 주요 메타데이터 추출 엔진을 구현합니다.</p>
+          </div>
+          <div class="focus-card reveal">
+            <h3 style="display: flex; align-items: center; gap: var(--spacing-sm);"><span style="color: var(--color-primary);">03.</span> Full-stack Product Dev</h3>
+            <p>React/Vite 및 Express, Spring Boot 기반의 견고한 시스템을 제작합니다. 컴포넌트 단위 설계와 신뢰도 높은 API 엔드포인트 구축을 핵심으로 삼습니다.</p>
+          </div>
+          <div class="focus-card reveal">
+            <h3 style="display: flex; align-items: center; gap: var(--spacing-sm);"><span style="color: var(--color-primary);">04.</span> Local Automation Tools</h3>
+            <p>개발자 및 실무자의 효율성을 위해 Electron, Node.js, PowerShell 스크립트를 활용해 OS 레벨에서 원클릭으로 작동하는 로컬 실행 자동화 환경을 구축합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Skills 섹션 -->
+    <section id="skills">
+      <div class="container">
+        <div class="reveal">
+          <h2>Skills System</h2>
+          <p style="margin-top: var(--spacing-sm); max-width: 600px;">다양한 레이어에서 효율적인 해결책을 구성하기 위해 습득한 기술 스택입니다.</p>
+        </div>
+
+        <div class="skills-grid reveal">
+          <!-- Frontend -->
+          <div class="skills-category">
+            <h3>Frontend</h3>
+            <div class="chips-container">
+              <span class="chip">HTML5</span>
+              <span class="chip">CSS3</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">React</span>
+              <span class="chip">Vite</span>
+              <span class="chip">Responsive UI</span>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="skills-category">
+            <h3>Backend</h3>
+            <div class="chips-container">
+              <span class="chip">Node.js</span>
+              <span class="chip">Express</span>
+              <span class="chip">Spring Boot</span>
+              <span class="chip">REST API</span>
+              <span class="chip">JPA</span>
+              <span class="chip">JDBC</span>
+            </div>
+          </div>
+
+          <!-- Data / DB -->
+          <div class="skills-category">
+            <h3>Data / DB</h3>
+            <div class="chips-container">
+              <span class="chip">Python</span>
+              <span class="chip">MySQL</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Supabase</span>
+              <span class="chip">Prisma</span>
+              <span class="chip">ETL Pipeline</span>
+              <span class="chip">Data Normalization</span>
+            </div>
+          </div>
+
+          <!-- AI / CV -->
+          <div class="skills-category">
+            <h3>AI / CV</h3>
+            <div class="chips-container">
+              <span class="chip">Prompt Engineering</span>
+              <span class="chip">YOLO</span>
+              <span class="chip">ONNX</span>
+              <span class="chip">TensorRT</span>
+              <span class="chip">Ultralytics</span>
+            </div>
+          </div>
+
+          <!-- DevOps / Tools -->
+          <div class="skills-category">
+            <h3>DevOps / Tools</h3>
+            <div class="chips-container">
+              <span class="chip">Git</span>
+              <span class="chip">GitHub</span>
+              <span class="chip">Docker Compose</span>
+              <span class="chip">GitHub Actions</span>
+              <span class="chip">PowerShell</span>
+              <span class="chip">Electron</span>
+            </div>
+          </div>
+
+          <!-- Testing / Quality -->
+          <div class="skills-category">
+            <h3>Testing / Quality</h3>
+            <div class="chips-container">
+              <span class="chip">Vitest</span>
+              <span class="chip">Automation Test</span>
+              <span class="chip">Validation Script</span>
+              <span class="chip">Documentation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Projects 섹션 -->
+    <section id="projects">
+      <div class="container">
+        <div class="reveal">
+          <h2>Selected Projects</h2>
+          <p style="margin-top: var(--spacing-sm); max-width: 600px;">실용성을 증명하고 문제 해결을 시도한 개발 기록들입니다.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- 1. Neet2Work -->
+          <div class="project-card reveal">
+            <div class="project-visual">
+              <canvas class="project-visual-canvas" data-viz="grid"></canvas>
+              <div style="font-size: 3rem; z-index: var(--z-index-base);">💼</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Neet2Work</h3>
+              <p class="project-desc">채용공고 탐색과 자기소개서 작성 과정을 연결한 AI 기반 취업 지원 서비스</p>
+              
+              <div class="project-role">
+                <strong>주요 역할 및 기여</strong>
+                <p>AI 자기소개서 작성 흐름 설계, React/Express 기능 개발, 공고 수집 파이프라인 구축 및 연동, 비정형 문서 데이터 처리 및 폴백 처리, 테스트 커버리지 관리</p>
+              </div>
+
+              <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag">Vite</span>
+                <span class="project-tag">TypeScript</span>
+                <span class="project-tag">Express</span>
+                <span class="project-tag">Python</span>
+                <span class="project-tag">AI Workflow</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/r2gul4r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. selfdex -->
+          <div class="project-card reveal">
+            <div class="project-visual">
+              <canvas class="project-visual-canvas" data-viz="flow"></canvas>
+              <div style="font-size: 3rem; z-index: var(--z-index-base);">🗂️</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">selfdex</h3>
+              <p class="project-desc">개인 작업 흐름과 파편화된 로컬 데이터를 체계적으로 아카이빙하고 통계를 제공하는 로컬 웹앱</p>
+              
+              <div class="project-role">
+                <strong>주요 역할 및 기여</strong>
+                <p>로컬 브라우저 샌드박스를 연동한 데이터 로딩 및 구조 정형화 설계, 로컬 저장소 연동 UI 구현, 프레임워크 없는 미니멀 웹 환경 구축</p>
+              </div>
+
+              <div class="project-tags">
+                <span class="project-tag">HTML</span>
+                <span class="project-tag">CSS</span>
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">Local Web App</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/r2gul4r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. photoEditer -->
+          <div class="project-card reveal">
+            <div class="project-visual">
+              <canvas class="project-visual-canvas" data-viz="particles"></canvas>
+              <div style="font-size: 3rem; z-index: var(--z-index-base);">🎨</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">photoEditer</h3>
+              <p class="project-desc">브라우저 및 로컬 OS 환경에서 필터 처리 및 이미지 픽셀 가속 연산을 실험하기 위한 로컬 웹앱 툴킷</p>
+              
+              <div class="project-role">
+                <strong>주요 역할 및 기여</strong>
+                <p>Canvas 2D Context 이미지 매트릭스 픽셀 맵 처리, 가속 필터 연산 파이프라인 개발, 슬라이더 연동 실시간 상태 업데이트 반응형 UI 설계</p>
+              </div>
+
+              <div class="project-tags">
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">Canvas API</span>
+                <span class="project-tag">UI Tooling</span>
+                <span class="project-tag">Pixel Matrix</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/r2gul4r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. AI/CV Experiment -->
+          <div class="project-card reveal">
+            <div class="project-visual">
+              <canvas class="project-visual-canvas" data-viz="detect"></canvas>
+              <div style="font-size: 3rem; z-index: var(--z-index-base);">🎯</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">AI/CV Experiment</h3>
+              <p class="project-desc">YOLO 기반 실시간 객체 인식 모델 커스텀 데이터셋 학습, 오토라벨링, ONNX/TensorRT 변환 및 가속 추론 벤치마킹 실험</p>
+              
+              <div class="project-role">
+                <strong>주요 역할 및 기여</strong>
+                <p>Ultralytics API 활용 및 라벨 자동화 파이프라인 스크립트 작성, ONNX 및 TensorRT 엔진 최적화 변환 성능 테스트, 로컬 디바이스 추론 속도 개선 실험</p>
+              </div>
+
+              <div class="project-tags">
+                <span class="project-tag">YOLO</span>
+                <span class="project-tag">Python</span>
+                <span class="project-tag">ONNX</span>
+                <span class="project-tag">TensorRT</span>
+                <span class="project-tag">Ultralytics</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/r2gul4r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Interactive Lab 섹션 -->
+    <section id="lab" style="background-color: var(--bg-secondary);">
+      <div class="container">
+        <div class="reveal">
+          <h2>Interactive Lab</h2>
+          <p style="margin-top: var(--spacing-sm); max-width: 600px;">
+            수학적 궤적과 입자들의 관계를 관찰할 수 있는 가상 실험실 영역입니다. 마우스 드래그로 입자들을 밀어내거나, 화면을 클릭하여 burst 시그널 효과를 트리거해보세요.
+          </p>
+        </div>
+
+        <div class="reveal" style="position: relative; width: 100%; height: 450px; background-color: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); overflow: hidden; margin-top: var(--spacing-xl);">
+          <canvas id="lab-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;"></canvas>
+          <div style="position: absolute; bottom: var(--spacing-md); left: var(--spacing-md); background-color: rgba(var(--color-primary-rgb), 0.1); padding: 6px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(var(--color-primary-rgb), 0.2); pointer-events: none;">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase;">Active Nodes Physics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Contact 섹션 -->
+    <section id="contact">
+      <div class="container">
+        <div class="reveal" style="text-align: center; max-width: 700px; margin: 0 auto;">
+          <h2>Contact Connection</h2>
+          <p style="margin-top: var(--spacing-lg); font-size: 1.2rem; color: var(--text-secondary);">
+            새로운 프로젝트, 협업, 자동화 아이디어에 대해 이야기하고 싶다면 편하게 연락해주세요.
+          </p>
+          
+          <div style="margin-top: var(--spacing-2xl); display: flex; flex-direction: column; align-items: center; gap: var(--spacing-md);">
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: var(--spacing-md) var(--spacing-xl); display: flex; align-items: center; gap: var(--spacing-lg); box-shadow: var(--shadow-sm); width: 100%; max-width: 480px; justify-content: space-between;">
+              <span id="email-address" style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary); letter-spacing: -0.01em;">leflex0821@gmail.com</span>
+              <button class="btn btn-primary" id="copy-email-btn" style="padding: 8px 16px; font-size: 0.85rem;" aria-label="이메일 주소 클립보드에 복사">Copy Email</button>
+            </div>
+
+            <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-sm);">
+              <a href="https://github.com/r2gul4r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:currentColor; vertical-align:middle; margin-right:4px;">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z"/>
+                </svg>
+                Visit GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-light); padding: var(--spacing-2xl) 0; font-size: 0.9rem; color: var(--text-secondary);">
+    <div class="container" style="display: flex; flex-direction: column; gap: var(--spacing-xl);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--spacing-lg);">
+        <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-primary);">Sungho Lee</div>
+        <div style="display: flex; gap: var(--spacing-lg);">
+          <a class="nav-link" data-target="hero">Home</a>
+          <a class="nav-link" data-target="about">About</a>
+          <a class="nav-link" data-target="projects">Projects</a>
+          <a class="nav-link" data-target="contact">Contact</a>
+        </div>
+      </div>
+      
+      <hr style="border: 0; border-top: 1px solid var(--border-light);">
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--spacing-md);">
+        <div>&copy; 2026 Sungho Lee. All rights reserved.</div>
+        <div style="display: flex; gap: var(--spacing-md);">
+          <span>leflex0821@gmail.com</span>
+          <span>|</span>
+          <a href="https://github.com/r2gul4r" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); font-weight: 600;">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 토스트 알림 컴포넌트 -->
+  <div class="toast" id="toast">이메일 주소가 클립보드에 복사되었습니다.</div>
+
+  <!-- 스크립트 파일 링크 (모듈 방식 순차 로드) -->
+  <script src="js/animations.js" defer></script>
+  <script src="js/particles.js" defer></script>
+  <script src="js/lab.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
