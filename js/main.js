@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const navLinks = document.querySelectorAll('.nav-link');
   const logoBtn = document.getElementById('logo-btn');
+  const workflowReelSection = document.getElementById('system-reel');
+  const workflowReelVideo = document.querySelector('.workflow-reel-video');
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   // 다크모드/라이트모드 토글 처리 함수
   const updateThemeIcons = (theme) => {
@@ -66,6 +69,115 @@ document.addEventListener('DOMContentLoaded', () => {
   
   window.addEventListener('scroll', handleScroll);
   handleScroll(); // 초기 로드 시 체크
+
+  // 모션 감축 선호 사용자는 자동 재생 비디오 루프를 멈춤
+  if (workflowReelVideo) {
+    const syncWorkflowReelMotion = () => {
+      if (reducedMotionQuery.matches) {
+        workflowReelVideo.pause();
+        workflowReelVideo.removeAttribute('autoplay');
+      } else {
+        workflowReelVideo.play().catch(() => {});
+      }
+    };
+
+    syncWorkflowReelMotion();
+    reducedMotionQuery.addEventListener('change', syncWorkflowReelMotion);
+  }
+
+  // 스크롤 진행도에 맞춰 시스템 릴 프레임을 Antigravity처럼 scale로 확장
+  if (workflowReelSection) {
+    let reelTicking = false;
+    const workflowReelTrack = workflowReelSection.querySelector('.video-reel-scroll-track');
+
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const easeOutCubic = (value) => 1 - Math.pow(1 - value, 3);
+
+    const updateWorkflowReelScale = () => {
+      const rect = (workflowReelTrack || workflowReelSection).getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const rawProgress = (viewportHeight * 0.92 - rect.top) / (viewportHeight * 0.56);
+      const progress = reducedMotionQuery.matches ? 1 : clamp(rawProgress, 0, 1);
+      const easedProgress = easeOutCubic(progress);
+      const scale = 0.52 + 0.48 * easedProgress;
+      const shadowAlpha = 0.14 + 0.1 * easedProgress;
+
+      workflowReelSection.style.setProperty('--reel-scale', scale.toFixed(4));
+      workflowReelSection.style.setProperty('--reel-shadow-alpha', shadowAlpha.toFixed(3));
+    };
+
+    const requestWorkflowReelScale = () => {
+      if (reelTicking) return;
+      reelTicking = true;
+      requestAnimationFrame(() => {
+        updateWorkflowReelScale();
+        reelTicking = false;
+      });
+    };
+
+    updateWorkflowReelScale();
+    window.addEventListener('scroll', requestWorkflowReelScale, { passive: true });
+    window.addEventListener('resize', requestWorkflowReelScale);
+    reducedMotionQuery.addEventListener('change', requestWorkflowReelScale);
+  }
+
+  // Focus Areas 파이프라인 진행도
+  const focusPipeline = document.querySelector('.focus-pipeline');
+  if (focusPipeline) {
+    let focusTicking = false;
+    const focusNodes = Array.from(focusPipeline.querySelectorAll('.focus-node'));
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    const updateFocusPipeline = () => {
+      const rect = focusPipeline.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const rawProgress = (viewportHeight * 0.72 - rect.top) / Math.max(rect.height, 1);
+      const progress = reducedMotionQuery.matches ? 1 : clamp(rawProgress, 0, 1);
+      const activeIndex = clamp(Math.round(progress * (focusNodes.length - 1)), 0, focusNodes.length - 1);
+
+      focusPipeline.style.setProperty('--focus-progress', progress.toFixed(4));
+      focusNodes.forEach((node, index) => {
+        node.classList.toggle('is-active', index === activeIndex);
+      });
+    };
+
+    const requestFocusPipelineUpdate = () => {
+      if (focusTicking) return;
+      focusTicking = true;
+      requestAnimationFrame(() => {
+        updateFocusPipeline();
+        focusTicking = false;
+      });
+    };
+
+    updateFocusPipeline();
+    window.addEventListener('scroll', requestFocusPipelineUpdate, { passive: true });
+    window.addEventListener('resize', requestFocusPipelineUpdate);
+    reducedMotionQuery.addEventListener('change', requestFocusPipelineUpdate);
+  }
+
+  // Skills System 레이어 포커스
+  const skillsSystemMap = document.querySelector('.skills-system-map');
+  if (skillsSystemMap) {
+    const skillLayers = Array.from(skillsSystemMap.querySelectorAll('.skill-layer'));
+
+    skillLayers.forEach(layer => {
+      const activateLayer = () => {
+        skillsSystemMap.classList.add('has-active');
+        skillLayers.forEach(item => item.classList.toggle('is-active', item === layer));
+      };
+
+      const releaseLayer = () => {
+        skillsSystemMap.classList.remove('has-active');
+        skillLayers.forEach(item => item.classList.remove('is-active'));
+      };
+
+      layer.addEventListener('mouseenter', activateLayer);
+      layer.addEventListener('focusin', activateLayer);
+      layer.addEventListener('mouseleave', releaseLayer);
+      layer.addEventListener('focusout', releaseLayer);
+    });
+  }
 
   // 섹션 부드러운 스크롤 이동 함수
   const scrollToSection = (targetId) => {

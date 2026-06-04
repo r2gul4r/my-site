@@ -40,7 +40,6 @@
           <li><a class="nav-link" data-target="focus">Focus</a></li>
           <li><a class="nav-link" data-target="skills">Skills</a></li>
           <li><a class="nav-link" data-target="projects">Projects</a></li>
-          <li><a class="nav-link" data-target="lab">Lab</a></li>
           <li><a class="nav-link" data-target="contact">Contact</a></li>
         </ul>
       </nav>
@@ -135,6 +134,42 @@
       </div>
     </section>
 
+    <!-- 시스템 릴 섹션 -->
+    <section id="system-reel" class="video-reel-section" aria-label="AI workflow reel">
+      <div class="container video-reel-container">
+        <div class="video-reel-copy reveal">
+          <span class="section-kicker">System Reel</span>
+          <h2>From Signals to Shipped Tools</h2>
+          <p>
+            데이터 수집, AI 워크플로우, 자동화, 제품화까지 이어지는 흐름을 하나의 실행 가능한 시스템으로 엮습니다.
+          </p>
+        </div>
+
+        <div class="video-reel-scroll-track">
+          <div class="video-reel-stage">
+            <div class="video-reel-frame reveal">
+              <div class="video-frame-bar" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <video
+                class="workflow-reel-video"
+                src="assets/videos/sungho-system-reel.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="AI workflow and product building reel"
+              ></video>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- 2. About 섹션 -->
     <section id="about">
       <div class="container">
@@ -181,23 +216,67 @@
           <p style="margin-top: var(--spacing-sm); max-width: 600px;">주로 다음과 같은 기술 및 실무 가치를 극대화하는 것에 집중하고 연구합니다.</p>
         </div>
 
-        <div class="focus-grid">
-          <div class="focus-card reveal">
-            <h3 style="display: flex; align-items: center; gap: var(--spacing-sm);"><span style="color: var(--color-primary);">01.</span> AI Workflow Design</h3>
-            <p>생성형 AI 모델을 단순 호출하는 단계를 넘어 입력 전처리, 비즈니스 규칙 판단, 검증, 최종 모니터링 화면까지 유기적으로 이어지는 AI 오케스트레이션 흐름을 설계합니다.</p>
+        <div class="focus-pipeline reveal" aria-label="문제 해결 파이프라인">
+          <div class="pipeline-track" aria-hidden="true">
+            <span class="pipeline-progress"></span>
+            <span class="pipeline-signal"></span>
           </div>
-          <div class="focus-card reveal">
-            <h3 style="display: flex; align-items: center; gap: var(--spacing-sm);"><span style="color: var(--color-primary);">02.</span> Data Collection & ETL</h3>
-            <p>공개 웹 데이터의 분산 수집부터 데이터 클렌징, 구조적 정규화, 적재 파이프라인 및 비정형 문서 내 주요 메타데이터 추출 엔진을 구현합니다.</p>
-          </div>
-          <div class="focus-card reveal">
-            <h3 style="display: flex; align-items: center; gap: var(--spacing-sm);"><span style="color: var(--color-primary);">03.</span> Full-stack Product Dev</h3>
-            <p>React/Vite 및 Express, Spring Boot 기반의 견고한 시스템을 제작합니다. 컴포넌트 단위 설계와 신뢰도 높은 API 엔드포인트 구축을 핵심으로 삼습니다.</p>
-          </div>
-          <div class="focus-card reveal">
-            <h3 style="display: flex; align-items: center; gap: var(--spacing-sm);"><span style="color: var(--color-primary);">04.</span> Local Automation Tools</h3>
-            <p>개발자 및 실무자의 효율성을 위해 Electron, Node.js, PowerShell 스크립트를 활용해 OS 레벨에서 원클릭으로 작동하는 로컬 실행 자동화 환경을 구축합니다.</p>
-          </div>
+
+          <article class="focus-node" data-focus-node="data">
+            <div class="focus-node-marker"><span>01</span></div>
+            <div class="focus-node-body">
+              <span class="focus-node-kicker">Collect</span>
+              <h3>Data Collection & ETL</h3>
+              <p>공개 웹 데이터의 분산 수집부터 클렌징, 정규화, 적재 파이프라인과 비정형 문서 메타데이터 추출 엔진을 구현합니다.</p>
+              <div class="focus-node-tags" aria-label="관련 키워드">
+                <span>crawler</span>
+                <span>normalization</span>
+                <span>pipeline</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="focus-node" data-focus-node="ai">
+            <div class="focus-node-marker"><span>02</span></div>
+            <div class="focus-node-body">
+              <span class="focus-node-kicker">Reason</span>
+              <h3>AI Workflow Design</h3>
+              <p>생성형 AI 호출을 넘어 입력 전처리, 비즈니스 규칙 판단, 검증, 최종 모니터링까지 이어지는 오케스트레이션 흐름을 설계합니다.</p>
+              <div class="focus-node-tags" aria-label="관련 키워드">
+                <span>prompt</span>
+                <span>validation</span>
+                <span>agent flow</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="focus-node" data-focus-node="build">
+            <div class="focus-node-marker"><span>03</span></div>
+            <div class="focus-node-body">
+              <span class="focus-node-kicker">Build</span>
+              <h3>Full-stack Product Dev</h3>
+              <p>React/Vite 및 Express, Spring Boot 기반 시스템을 제작합니다. 컴포넌트 설계와 신뢰도 높은 API 엔드포인트 구축을 핵심으로 삼습니다.</p>
+              <div class="focus-node-tags" aria-label="관련 키워드">
+                <span>frontend</span>
+                <span>api</span>
+                <span>service</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="focus-node" data-focus-node="automation">
+            <div class="focus-node-marker"><span>04</span></div>
+            <div class="focus-node-body">
+              <span class="focus-node-kicker">Automate</span>
+              <h3>Local Automation Tools</h3>
+              <p>Electron, Node.js, PowerShell 스크립트로 OS 레벨에서 원클릭으로 작동하는 로컬 실행 자동화 환경을 구축합니다.</p>
+              <div class="focus-node-tags" aria-label="관련 키워드">
+                <span>electron</span>
+                <span>script</span>
+                <span>desktop</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -210,10 +289,18 @@
           <p style="margin-top: var(--spacing-sm); max-width: 600px;">다양한 레이어에서 효율적인 해결책을 구성하기 위해 습득한 기술 스택입니다.</p>
         </div>
 
-        <div class="skills-grid reveal">
-          <!-- Frontend -->
-          <div class="skills-category">
-            <h3>Frontend</h3>
+        <div class="skills-system-map reveal" aria-label="기술 스택 시스템 맵">
+          <div class="skills-core" aria-hidden="true">
+            <span>Problem</span>
+            <strong>Product System</strong>
+            <span>Tooling</span>
+          </div>
+
+          <article class="skill-layer" data-skill-layer="interface">
+            <div class="skill-layer-header">
+              <span class="skill-layer-index">01</span>
+              <h3>Interface Layer</h3>
+            </div>
             <div class="chips-container">
               <span class="chip">HTML5</span>
               <span class="chip">CSS3</span>
@@ -223,11 +310,13 @@
               <span class="chip">Vite</span>
               <span class="chip">Responsive UI</span>
             </div>
-          </div>
+          </article>
 
-          <!-- Backend -->
-          <div class="skills-category">
-            <h3>Backend</h3>
+          <article class="skill-layer" data-skill-layer="service">
+            <div class="skill-layer-header">
+              <span class="skill-layer-index">02</span>
+              <h3>Service Layer</h3>
+            </div>
             <div class="chips-container">
               <span class="chip">Node.js</span>
               <span class="chip">Express</span>
@@ -236,11 +325,13 @@
               <span class="chip">JPA</span>
               <span class="chip">JDBC</span>
             </div>
-          </div>
+          </article>
 
-          <!-- Data / DB -->
-          <div class="skills-category">
-            <h3>Data / DB</h3>
+          <article class="skill-layer" data-skill-layer="data">
+            <div class="skill-layer-header">
+              <span class="skill-layer-index">03</span>
+              <h3>Data Layer</h3>
+            </div>
             <div class="chips-container">
               <span class="chip">Python</span>
               <span class="chip">MySQL</span>
@@ -250,11 +341,13 @@
               <span class="chip">ETL Pipeline</span>
               <span class="chip">Data Normalization</span>
             </div>
-          </div>
+          </article>
 
-          <!-- AI / CV -->
-          <div class="skills-category">
-            <h3>AI / CV</h3>
+          <article class="skill-layer" data-skill-layer="ai">
+            <div class="skill-layer-header">
+              <span class="skill-layer-index">04</span>
+              <h3>AI Layer</h3>
+            </div>
             <div class="chips-container">
               <span class="chip">Prompt Engineering</span>
               <span class="chip">YOLO</span>
@@ -262,11 +355,13 @@
               <span class="chip">TensorRT</span>
               <span class="chip">Ultralytics</span>
             </div>
-          </div>
+          </article>
 
-          <!-- DevOps / Tools -->
-          <div class="skills-category">
-            <h3>DevOps / Tools</h3>
+          <article class="skill-layer" data-skill-layer="automation">
+            <div class="skill-layer-header">
+              <span class="skill-layer-index">05</span>
+              <h3>Automation Layer</h3>
+            </div>
             <div class="chips-container">
               <span class="chip">Git</span>
               <span class="chip">GitHub</span>
@@ -275,18 +370,20 @@
               <span class="chip">PowerShell</span>
               <span class="chip">Electron</span>
             </div>
-          </div>
+          </article>
 
-          <!-- Testing / Quality -->
-          <div class="skills-category">
-            <h3>Testing / Quality</h3>
+          <article class="skill-layer" data-skill-layer="quality">
+            <div class="skill-layer-header">
+              <span class="skill-layer-index">06</span>
+              <h3>Quality Layer</h3>
+            </div>
             <div class="chips-container">
               <span class="chip">Vitest</span>
               <span class="chip">Automation Test</span>
               <span class="chip">Validation Script</span>
               <span class="chip">Documentation</span>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -414,48 +511,34 @@
       </div>
     </section>
 
-    <!-- 6. Interactive Lab 섹션 -->
-    <section id="lab" style="background-color: var(--bg-secondary);">
-      <div class="container">
-        <div class="reveal">
-          <h2>Interactive Lab</h2>
-          <p style="margin-top: var(--spacing-sm); max-width: 600px;">
-            수학적 궤적과 입자들의 관계를 관찰할 수 있는 가상 실험실 영역입니다. 마우스 드래그로 입자들을 밀어내거나, 화면을 클릭하여 burst 시그널 효과를 트리거해보세요.
-          </p>
-        </div>
-
-        <div class="reveal" style="position: relative; width: 100%; height: 450px; background-color: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); overflow: hidden; margin-top: var(--spacing-xl);">
-          <canvas id="lab-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;"></canvas>
-          <div style="position: absolute; bottom: var(--spacing-md); left: var(--spacing-md); background-color: rgba(var(--color-primary-rgb), 0.1); padding: 6px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(var(--color-primary-rgb), 0.2); pointer-events: none;">
-            <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase;">Active Nodes Physics</span>
+    <!-- 6. Contact 섹션 -->
+    <section id="contact" class="contact-connection-section">
+      <div class="container contact-connection-container">
+        <div class="contact-panel reveal" data-contact-pattern="mail">
+          <canvas class="contact-particle-canvas" data-pattern="mail"></canvas>
+          <div class="contact-card email-contact-card">
+            <span class="contact-kicker">Email</span>
+            <h2>Contact Connection</h2>
+            <p>프로젝트, 협업, 자동화 아이디어를 빠르게 이어갈 수 있습니다.</p>
+            <div class="email-copy-box">
+              <span id="email-address">leflex0821@gmail.com</span>
+              <button class="btn btn-primary" id="copy-email-btn" aria-label="이메일 주소 클립보드에 복사">Copy Email</button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- 7. Contact 섹션 -->
-    <section id="contact">
-      <div class="container">
-        <div class="reveal" style="text-align: center; max-width: 700px; margin: 0 auto;">
-          <h2>Contact Connection</h2>
-          <p style="margin-top: var(--spacing-lg); font-size: 1.2rem; color: var(--text-secondary);">
-            새로운 프로젝트, 협업, 자동화 아이디어에 대해 이야기하고 싶다면 편하게 연락해주세요.
-          </p>
-          
-          <div style="margin-top: var(--spacing-2xl); display: flex; flex-direction: column; align-items: center; gap: var(--spacing-md);">
-            <div style="background-color: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: var(--spacing-md) var(--spacing-xl); display: flex; align-items: center; gap: var(--spacing-lg); box-shadow: var(--shadow-sm); width: 100%; max-width: 480px; justify-content: space-between;">
-              <span id="email-address" style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary); letter-spacing: -0.01em;">leflex0821@gmail.com</span>
-              <button class="btn btn-primary" id="copy-email-btn" style="padding: 8px 16px; font-size: 0.85rem;" aria-label="이메일 주소 클립보드에 복사">Copy Email</button>
-            </div>
-
-            <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-sm);">
-              <a href="https://github.com/r2gul4r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:currentColor; vertical-align:middle; margin-right:4px;">
-                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z"/>
-                </svg>
-                Visit GitHub
-              </a>
-            </div>
+        <div class="contact-panel reveal" data-contact-pattern="github">
+          <canvas class="contact-particle-canvas" data-pattern="github"></canvas>
+          <div class="contact-card github-contact-card">
+            <span class="contact-kicker">GitHub</span>
+            <h2>Open Source Trace</h2>
+            <p>작게 실험하고, 필요한 도구를 만들고, 기록으로 남깁니다.</p>
+            <a href="https://github.com/r2gul4r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary github-contact-link">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z"/>
+              </svg>
+              Visit GitHub
+            </a>
           </div>
         </div>
       </div>
@@ -494,7 +577,7 @@
   <!-- 스크립트 파일 링크 (모듈 방식 순차 로드) -->
   <script src="js/animations.js" defer></script>
   <script src="js/particles.js" defer></script>
-  <script src="js/lab.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/contactParticles.js" defer></script>
 </body>
 </html>
