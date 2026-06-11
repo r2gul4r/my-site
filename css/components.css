@@ -713,12 +713,9 @@
 }
 
 .project-preview-goalplz,
-.project-preview-aicv {
-  padding: clamp(18px, 2.5vw, 36px);
-}
-
+.project-preview-aicv,
 .project-preview-screenshot {
-  padding: 0;
+  padding: clamp(18px, 2.5vw, 36px);
 }
 
 .project-visual-canvas {
