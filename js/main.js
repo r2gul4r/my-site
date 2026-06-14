@@ -2,6 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // DOM 요소 취득
+  const languageToggleBtn = document.getElementById('language-toggle');
+  const languageFlag = document.getElementById('language-flag');
   const themeToggleBtn = document.getElementById('theme-toggle');
   const sunIcon = themeToggleBtn.querySelector('.sun-icon');
   const moonIcon = themeToggleBtn.querySelector('.moon-icon');
@@ -19,6 +21,255 @@ document.addEventListener('DOMContentLoaded', () => {
   const workflowReelSection = document.getElementById('system-reel');
   const workflowReelVideo = document.querySelector('.workflow-reel-video');
   const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const LANGUAGE_STORAGE_KEY = 'language';
+  const JAPANESE_TEXT = {
+    '본문 바로가기': '本文へスキップ',
+    'Home': 'ホーム',
+    'About': '私について',
+    'Focus': '注力',
+    'Skills': 'スキル',
+    'Projects': 'プロジェクト',
+    'Contact': '連絡先',
+    'Building AI-Powered Tools &': 'AIで動くツールと',
+    'Interactive Systems': 'インタラクティブシステムを構築',
+    '데이터 수집, AI 작성 흐름, 자동화 스크립트, 제품 UI를 연결해 반복 업무를 줄이는 도구를 만듭니다.': 'データ収集、AIライティングフロー、自動化スクリプト、プロダクトUIをつなぎ、反復作業を減らすツールを作ります。',
+    'View Projects': 'プロジェクトを見る',
+    'Contact Me': '連絡する',
+    'AI Writing Flow': 'AIライティングフロー',
+    'Evidence-grounded Drafting': '根拠に基づくドラフト作成',
+    'Data Pipeline': 'データパイプライン',
+    'ETL & Collection': 'ETL・収集',
+    'Local Automation': 'ローカル自動化',
+    'PowerShell & CLI Tools': 'PowerShell・CLIツール',
+    'AI/CV Experiment': 'AI・CV実験',
+    'YOLO & TensorRT': 'YOLO・TensorRT',
+    'System Reel': 'システムリール',
+    'From Signals to Shipped Tools': 'シグナルから実用ツールへ',
+    '공개 데이터 수집, AI 처리, 검증, 자동화, 제품화까지 이어지는 흐름을 실행 가능한 시스템으로 엮습니다.': '公開データの収集、AI処理、検証、自動化、プロダクト化まで続く流れを、実行可能なシステムとして組み上げます。',
+    'About Me': '私について',
+    'e스포츠 활동 중 경기 데이터와 패턴을 분석하던 경험에서 출발해, 지금은 AI와 데이터 자동화로 반복 문제를 줄이는 도구를 만드는 데 집중하고 있습니다.': 'eスポーツ活動で試合データとパターンを分析していた経験から出発し、今はAIとデータ自動化で反復的な課題を減らすツール作りに集中しています。',
+    'Neet2Work에서는 채용공고 수집, 문서 추출, AI 자기소개서 작성 흐름을 연결했고, Selfdex와 자동화 작업에서는 승인, 검증, 기록이 남는 실행 루프를 설계했습니다.': 'Neet2Workでは求人情報の収集、文書抽出、AI自己紹介書作成の流れを接続し、Selfdexや自動化作業では承認、検証、記録が残る実行ループを設計しました。',
+    'React/Vite, Express, Spring Boot, Python ETL, PowerShell, GitHub Actions를 다루며 빠른 실험을 실제로 쓸 수 있는 풀스택 시스템으로 정리하는 개발을 지향합니다.': 'React/Vite、Express、Spring Boot、Python ETL、PowerShell、GitHub Actionsを扱い、素早い実験を実際に使えるフルスタックシステムへ整理する開発を志向しています。',
+    '이성호': 'イ・ソンホ',
+    'AI Workflow & Automation Full-stack Developer': 'AIワークフロー・自動化フルスタック開発者',
+    'Training': '研修',
+    'Philosophy': '姿勢',
+    '"Try, verify, record"': '"試し、検証し、記録する"',
+    'Focus Areas': '注力領域',
+    '로컬 실험에서 실제 서비스 흐름까지 이어지도록, 수집·AI·구현·검증을 한 사이클로 다룹니다.': 'ローカル実験から実サービスの流れまでつながるように、収集・AI・実装・検証を1つのサイクルとして扱います。',
+    'Collect': '収集',
+    'Data Collection & ETL': 'データ収集・ETL',
+    '채용공고, 영화 상영 정보, 문서 본문처럼 흩어진 공개 데이터를 수집하고 표준 JSON과 DB 흐름으로 정규화합니다.': '求人情報、映画上映情報、文書本文のように散在する公開データを収集し、標準JSONとDBの流れへ正規化します。',
+    'Reason': '設計',
+    'AI Workflow Design': 'AIワークフロー設計',
+    '사용자 경험을 먼저 구조화하고, 부족한 정보를 확인한 뒤, 근거가 연결된 초안과 리포트를 생성하는 AI 흐름을 설계합니다.': 'ユーザー体験を先に構造化し、不足情報を確認したうえで、根拠とつながるドラフトやレポートを生成するAIフローを設計します。',
+    'Build': '実装',
+    'Full-stack Product Dev': 'フルスタックプロダクト開発',
+    'React/Vite 화면, Express·Spring Boot API, DB 마이그레이션을 연결해 데모가 아니라 끝까지 흐르는 기능을 만듭니다.': 'React/Vite画面、Express・Spring Boot API、DBマイグレーションを接続し、デモで終わらない一連の機能を作ります。',
+    'Automate': '自動化',
+    'Automation & Review': '自動化・レビュー',
+    'PowerShell, CLI, Codex 작업 루프, 보안 리뷰 흐름을 묶어 승인·실행·검증·기록이 남는 도구를 구성합니다.': 'PowerShell、CLI、Codex作業ループ、セキュリティレビューの流れをまとめ、承認・実行・検証・記録が残るツールを構成します。',
+    'Skills System': 'スキルシステム',
+    '다양한 레이어에서 효율적인 해결책을 구성하기 위해 습득한 기술 스택입니다.': '複数のレイヤーで効率的な解決策を構成するために身につけた技術スタックです。',
+    'Interface Layer': 'インターフェース層',
+    'Service Layer': 'サービス層',
+    'Data Layer': 'データ層',
+    'AI Layer': 'AI層',
+    'Automation Layer': '自動化層',
+    'Quality Layer': '品質層',
+    'Selected Projects': '主なプロジェクト',
+    'AI 작성 흐름, 자동화, 로컬 도구, 컴퓨터 비전 실험을 실제 작업으로 구현한 기록입니다.': 'AIライティングフロー、自動化、ローカルツール、コンピュータビジョン実験を実作業として形にした記録です。',
+    '채용공고 탐색, 문서 추출, AI 자기소개서 작성 흐름을 연결한 취업 지원 서비스': '求人探索、文書抽出、AI自己紹介書作成の流れをつないだ就職支援サービス',
+    '주요 역할 및 기여': '主な役割と貢献',
+    '공고 수집 ETL, AI 작성 단계 설계, 첨부 문서 본문 추출, AI provider 라우팅과 fallback demo 경로, React/Express 기능 연결을 맡았습니다.': '求人収集ETL、AI作成ステップ設計、添付文書本文抽出、AI providerルーティングとfallback demo経路、React/Express機能連携を担当しました。',
+    '거친 요청을 감사 가능한 Goal mode 목표로 바꾸는 Codex skill과 /goalplz 프롬프트': '粗い依頼を監査可能なGoal mode目標へ変換するCodex skillと/goalplzプロンプト',
+    '목표 문장, 성공 기준, 제약, 검증 관점을 한 번에 정리해 Codex 작업을 추적 가능한 실행 단위로 고정하는 흐름을 설계했습니다.': '目標文、成功基準、制約、検証観点を一度に整理し、Codex作業を追跡可能な実行単位へ固定する流れを設計しました。',
+    '요청 입력': '依頼入力',
+    '목표 고정': '目標固定',
+    '검증 기준': '検証基準',
+    'RAW 사진 분석부터 보정 후보, 미리보기, JPEG/PNG export까지 이어지는 로컬 사진 보정 추천 도구': 'RAW写真分析から補正候補、プレビュー、JPEG/PNG exportまでつながるローカル写真補正推薦ツール',
+    '히스토그램 기반 이미지 분석, 스타일 목표 해석, 로컬 preview/export 흐름, Python 백엔드와 React UI, Windows용 설치 CLI를 구성했습니다.': 'ヒストグラムベースの画像分析、スタイル目標の解釈、ローカルpreview/exportフロー、PythonバックエンドとReact UI、Windows向けインストールCLIを構成しました。',
+    'YOLO 기반 객체 인식 모델을 커스텀 데이터셋으로 학습하고 로컬 추론 성능을 실험한 컴퓨터 비전 작업': 'YOLOベースの物体認識モデルをカスタムデータセットで学習し、ローカル推論性能を検証したコンピュータビジョン作業',
+    '타겟/비타겟 라벨링 데이터셋 구성, 1차 모델 기반 오토라벨링, 노이즈·블러 augmentation, 저학습률 파인튜닝, ONNX/TensorRT 변환과 추론 환경 셋업을 진행했습니다.': 'ターゲット/非ターゲットのラベリングデータセット構成、一次モデルによるオートラベリング、ノイズ・ブラーaugmentation、低学習率ファインチューニング、ONNX/TensorRT変換と推論環境セットアップを行いました。',
+    'Project Archive': 'プロジェクトアーカイブ',
+    'Other Builds & Experiments': 'その他の開発・実験',
+    '다양한 실험, 개발 기록들이 보관되어 있습니다.': 'さまざまな実験と開発記録をまとめています。',
+    'Data': 'データ',
+    'CGV, 롯데시네마, 메가박스 상영 데이터를 수집하고 비교 가능한 구조로 정리하는 도구': 'CGV、ロッテシネマ、メガボックスの上映データを収集し、比較可能な構造へ整理するツール',
+    'Automation': '自動化',
+    '후보 탐색부터 로컬 검증과 제출 준비까지 이어지는 승인 기반 작업 루프': '候補探索からローカル検証、提出準備までつながる承認ベースの作業ループ',
+    'Codex 작업을 선택, 승인, 검증, 기록까지 통제하는 프로젝트 세션 오케스트레이션 도구': 'Codex作業の選択、承認、検証、記録まで制御するプロジェクトセッションオーケストレーションツール',
+    'Vision': 'ビジョン',
+    '학습된 YOLO 모델을 ONNX와 TensorRT로 변환하고 로컬 추론 결과를 비교한 실험 기록': '学習済みYOLOモデルをONNXとTensorRTへ変換し、ローカル推論結果を比較した実験記録',
+    'Desktop': 'デスクトップ',
+    'Shimeji-ee 엔진과 커스텀 이미지셋을 통합한 런처, 스프라이트, 패키징 실험': 'Shimeji-eeエンジンとカスタム画像セットを統合したランチャー、スプライト、パッケージング実験',
+    'Email': 'メール',
+    'Contact Connection': 'お問い合わせ',
+    '프로젝트, 협업, 자동화 아이디어를 빠르게 이어갈 수 있습니다.': 'プロジェクト、協業、自動化アイデアをすばやく次の動きへつなげられます。',
+    'Copy Email': 'メールをコピー',
+    'Open Source Trace': 'オープンソースの記録',
+    '작게 실험하고, 필요한 도구를 만들고, 기록으로 남깁니다.': '小さく試し、必要なツールを作り、記録として残します。',
+    'Visit GitHub': 'GitHubを見る'
+  };
+  const LOCALIZED_UI = {
+    ko: {
+      documentTitle: 'Sungho Lee | AI & Data Automation Full-Stack Developer',
+      metaDescription: 'AI 워크플로우, 데이터 수집, 자동화, 풀스택 개발을 연결해 실용적인 도구를 만드는 개발자 이성호의 포트폴리오입니다.',
+      languageToggleAria: '언어 전환: 현재 한국어',
+      themeToggleAria: '테마 전환',
+      githubAria: 'GitHub 바로가기',
+      menuToggleAria: '메뉴 토글',
+      mainNavAria: '메인 내비게이션',
+      workflowReelAria: 'AI workflow and product building reel',
+      focusPipelineAria: '문제 해결 파이프라인',
+      relatedKeywordsAria: '관련 키워드',
+      skillsMapAria: '기술 스택 시스템 맵',
+      projectArchiveAria: 'Project Archive',
+      copyEmailAria: '이메일 주소 클립보드에 복사',
+      neet2workAlt: 'Neet2Work main frontend screen',
+      photoEditerAlt: 'photoEditer frontend screen with a loaded photo and visible histogram',
+      toastEmailCopied: '이메일 주소가 클립보드에 복사되었습니다.',
+      toastEmailCopyFailed: '클립보드 복사에 실패했습니다.'
+    },
+    ja: {
+      documentTitle: 'Sungho Lee | AI・データ自動化フルスタック開発者',
+      metaDescription: 'AIワークフロー、データ収集、自動化、フルスタック開発をつなぎ、実用的なツールを作る開発者イ・ソンホのポートフォリオです。',
+      languageToggleAria: '言語切替: 現在は日本語',
+      themeToggleAria: 'テーマ切替',
+      githubAria: 'GitHubへ移動',
+      menuToggleAria: 'メニュー切替',
+      mainNavAria: 'メインナビゲーション',
+      workflowReelAria: 'AIワークフローとプロダクト開発のリール',
+      focusPipelineAria: '課題解決パイプライン',
+      relatedKeywordsAria: '関連キーワード',
+      skillsMapAria: '技術スタックシステムマップ',
+      projectArchiveAria: 'プロジェクトアーカイブ',
+      copyEmailAria: 'メールアドレスをクリップボードへコピー',
+      neet2workAlt: 'Neet2Workのメインフロントエンド画面',
+      photoEditerAlt: '写真を読み込みヒストグラムが表示されたphotoEditerのフロントエンド画面',
+      toastEmailCopied: 'メールアドレスをクリップボードにコピーしました。',
+      toastEmailCopyFailed: 'クリップボードへのコピーに失敗しました。'
+    }
+  };
+  const ATTRIBUTE_TRANSLATIONS = [
+    { selector: 'nav', attr: 'aria-label', key: 'mainNavAria' },
+    { selector: '.workflow-reel-video', attr: 'aria-label', key: 'workflowReelAria' },
+    { selector: '.focus-pipeline', attr: 'aria-label', key: 'focusPipelineAria' },
+    { selector: '.focus-node-tags', attr: 'aria-label', key: 'relatedKeywordsAria' },
+    { selector: '.skills-system-map', attr: 'aria-label', key: 'skillsMapAria' },
+    { selector: '.project-archive', attr: 'aria-label', key: 'projectArchiveAria' },
+    { selector: '#copy-email-btn', attr: 'aria-label', key: 'copyEmailAria' },
+    { selector: '.project-preview-neet2work .project-preview-image', attr: 'alt', key: 'neet2workAlt' },
+    { selector: '.project-preview-photoediter .project-preview-image', attr: 'alt', key: 'photoEditerAlt' }
+  ];
+
+  const normalizeLanguage = (language) => language === 'ja' ? 'ja' : 'ko';
+  let currentLanguage = normalizeLanguage(document.documentElement.getAttribute('lang'));
+
+  const collectTranslatableTextNodes = () => {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const key = node.nodeValue.trim();
+        const parent = node.parentElement;
+
+        if (!key || !parent) {
+          return NodeFilter.FILTER_REJECT;
+        }
+
+        if (parent.closest('script, style, noscript, #toast')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+
+        return JAPANESE_TEXT[key] ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const nodes = [];
+    let node = walker.nextNode();
+
+    while (node) {
+      nodes.push({
+        node,
+        originalText: node.nodeValue,
+        key: node.nodeValue.trim()
+      });
+      node = walker.nextNode();
+    }
+
+    return nodes;
+  };
+
+  const translatableTextNodes = collectTranslatableTextNodes();
+
+  const getLocalizedUi = () => LOCALIZED_UI[currentLanguage] || LOCALIZED_UI.ko;
+
+  const updateLanguageToggle = () => {
+    if (!languageToggleBtn) return;
+
+    const flagSrc = currentLanguage === 'ja'
+      ? languageFlag?.dataset.flagJa
+      : languageFlag?.dataset.flagKo;
+
+    if (languageFlag && flagSrc) {
+      languageFlag.setAttribute('src', flagSrc);
+    }
+
+    languageToggleBtn.setAttribute('aria-label', getLocalizedUi().languageToggleAria);
+    languageToggleBtn.setAttribute('aria-pressed', String(currentLanguage === 'ja'));
+    languageToggleBtn.setAttribute('title', getLocalizedUi().languageToggleAria);
+  };
+
+  const applyLanguage = (language, persist = true) => {
+    currentLanguage = normalizeLanguage(language);
+    const ui = getLocalizedUi();
+    const metaDescription = document.querySelector('meta[name="description"]');
+
+    document.documentElement.setAttribute('lang', currentLanguage);
+    document.documentElement.setAttribute('data-language', currentLanguage);
+    document.title = ui.documentTitle;
+
+    if (metaDescription) {
+      metaDescription.setAttribute('content', ui.metaDescription);
+    }
+
+    if (persist) {
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLanguage);
+    }
+
+    translatableTextNodes.forEach(({ node, originalText, key }) => {
+      const translatedText = currentLanguage === 'ja' ? JAPANESE_TEXT[key] : key;
+      node.nodeValue = originalText.replace(key, translatedText);
+    });
+
+    ATTRIBUTE_TRANSLATIONS.forEach(({ selector, attr, key }) => {
+      document.querySelectorAll(selector).forEach(element => {
+        element.setAttribute(attr, ui[key]);
+      });
+    });
+
+    themeToggleBtn.setAttribute('aria-label', ui.themeToggleAria);
+    menuToggleBtn.setAttribute('aria-label', ui.menuToggleAria);
+    document.querySelectorAll('a[aria-label="GitHub 바로가기"], a[aria-label="GitHubへ移動"]').forEach(link => {
+      link.setAttribute('aria-label', ui.githubAria);
+    });
+
+    if (toast && !toast.classList.contains('active')) {
+      toast.textContent = ui.toastEmailCopied;
+    }
+
+    updateLanguageToggle();
+  };
+
+  const showToast = (messageKey) => {
+    if (toastTimeout) {
+      clearTimeout(toastTimeout);
+    }
+
+    toast.textContent = getLocalizedUi()[messageKey];
+    toast.classList.add('active');
+    toastTimeout = setTimeout(() => {
+      toast.classList.remove('active');
+    }, 2000);
+  };
 
   // 다크모드/라이트모드 토글 처리 함수
   const updateThemeIcons = (theme) => {
@@ -44,6 +295,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialTheme = document.documentElement.getAttribute('data-theme');
   updateThemeIcons(initialTheme);
   themeToggleBtn.addEventListener('click', toggleTheme);
+
+  applyLanguage(currentLanguage, false);
+  if (languageToggleBtn) {
+    languageToggleBtn.addEventListener('click', () => {
+      const nextLanguage = currentLanguage === 'ja' ? 'ko' : 'ja';
+      applyLanguage(nextLanguage);
+    });
+  }
 
   // 모바일 메뉴 제어 함수
   const toggleMobileMenu = () => {
@@ -208,22 +467,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // 이메일 클립보드 복사 및 토스트 출력 함수
   let toastTimeout = null;
   const copyEmailToClipboard = () => {
-    const textToCopy = emailAddress.textContent;
+    const textToCopy = emailAddress.textContent.trim();
+
+    if (!navigator.clipboard || !navigator.clipboard.writeText) {
+      showToast('toastEmailCopyFailed');
+      return;
+    }
     
     navigator.clipboard.writeText(textToCopy)
       .then(() => {
-        // 기존 타임아웃 초기화
-        if (toastTimeout) {
-          clearTimeout(toastTimeout);
-        }
-        
-        toast.classList.add('active');
-        toastTimeout = setTimeout(() => {
-          toast.classList.remove('active');
-        }, 2000);
+        showToast('toastEmailCopied');
       })
       .catch(() => {
-        // 복사 실패 핸들러
+        showToast('toastEmailCopyFailed');
       });
   };
 

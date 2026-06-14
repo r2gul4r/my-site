@@ -15,6 +15,12 @@
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
+      const savedLanguage = localStorage.getItem('language');
+      const initialLanguage = savedLanguage === 'ja' ? 'ja' : 'ko';
+
+      document.documentElement.setAttribute('lang', initialLanguage);
+      document.documentElement.setAttribute('data-language', initialLanguage);
+
       if (savedTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
       } else {
@@ -45,6 +51,19 @@
       </nav>
 
       <div class="header-actions">
+        <!-- 언어 토글 -->
+        <button class="icon-btn language-toggle" id="language-toggle" type="button" aria-label="언어 전환" aria-pressed="false">
+          <img
+            class="language-flag"
+            id="language-flag"
+            src="assets/flags/kr.png"
+            alt=""
+            aria-hidden="true"
+            data-flag-ko="assets/flags/kr.png"
+            data-flag-ja="assets/flags/jp.png"
+          >
+        </button>
+
         <!-- 다크모드 토글 -->
         <button class="icon-btn" id="theme-toggle" aria-label="테마 전환">
           <!-- 해 (라이트모드 시 다크모드로 변경 아이콘) -->

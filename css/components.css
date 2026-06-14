@@ -85,6 +85,26 @@
   gap: var(--spacing-md);
 }
 
+/* 언어 토글 */
+.language-toggle {
+  padding: 0;
+  overflow: hidden;
+}
+
+.language-flag {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(18, 18, 18, 0.12);
+  transition: transform var(--transition-fast);
+}
+
+.language-toggle:hover .language-flag {
+  transform: scale(1.07);
+}
+
 /* 테마 토글 및 깃허브 버튼 */
 .icon-btn {
   background: none;
@@ -1613,6 +1633,23 @@
   }
   .hero-canvas-bg {
     opacity: 0.68;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-actions {
+    gap: var(--spacing-sm);
+  }
+  .language-toggle {
+    padding: 0;
+  }
+  .language-flag {
+    width: 28px;
+    height: 28px;
+  }
+  .icon-btn {
+    width: 38px;
+    height: 38px;
   }
 }
 
