@@ -913,6 +913,78 @@
   height: 100%;
   object-fit: cover;
 }
+.project-preview-shot-r5 {
+  background: #0f172a;
+}
+
+.project-preview-image-cycle {
+  position: absolute;
+  inset: 0;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: opacity, transform;
+}
+
+.project-preview-image-cycle.is-primary {
+  animation-name: r5PreviewPrimary;
+}
+
+.project-preview-image-cycle.is-secondary {
+  animation-name: r5PreviewSecondary;
+}
+
+.project-preview-shot-r5:hover .project-preview-image-cycle {
+  animation-play-state: paused;
+}
+
+@keyframes r5PreviewPrimary {
+  0%,
+  42% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50%,
+  92% {
+    opacity: 0;
+    transform: scale(1.015);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes r5PreviewSecondary {
+  0%,
+  42% {
+    opacity: 0;
+    transform: scale(1.015);
+  }
+  50%,
+  92% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.015);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-preview-image-cycle {
+    animation: none;
+  }
+
+  .project-preview-image-cycle.is-primary {
+    opacity: 1;
+  }
+
+  .project-preview-image-cycle.is-secondary {
+    opacity: 0;
+  }
+}
 
 .project-preview-steps {
   position: absolute;
