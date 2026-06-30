@@ -1,0 +1,360 @@
+- generic [active] [ref=e1]:
+  - link "본문 바로가기" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5] [cursor=pointer]: Sungho Lee
+      - navigation "메인 내비게이션" [ref=e6]:
+        - list [ref=e7]:
+          - listitem [ref=e8]: Home
+          - listitem [ref=e9]: About
+          - listitem [ref=e10]: Focus
+          - listitem [ref=e11]: Skills
+          - listitem [ref=e12]: Projects
+          - listitem [ref=e13]: Contact
+      - generic [ref=e14]:
+        - button "테마 전환" [ref=e15] [cursor=pointer]:
+          - img [ref=e16]
+        - link "GitHub 바로가기" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/r2gul4r
+          - img [ref=e18]
+  - main [ref=e20]:
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - heading "Building AI-Powered Tools & Interactive Systems" [level=1] [ref=e24]:
+          - text: Building AI-Powered Tools &
+          - text: Interactive Systems
+        - paragraph [ref=e25]: 데이터 수집, AI 작성 흐름, 자동화 스크립트, 제품 UI를 연결해 반복 업무를 줄이는 도구를 만듭니다.
+        - generic [ref=e26]:
+          - button "View Projects" [ref=e27] [cursor=pointer]
+          - button "Contact Me" [ref=e28] [cursor=pointer]
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: 🤖
+          - generic [ref=e32]:
+            - heading "AI Writing Flow" [level=4] [ref=e33]
+            - paragraph [ref=e34]: Evidence-grounded Drafting
+        - generic [ref=e35]:
+          - generic [ref=e36]: ⚡
+          - generic [ref=e37]:
+            - heading "Data Pipeline" [level=4] [ref=e38]
+            - paragraph [ref=e39]: ETL & Collection
+        - generic [ref=e40]:
+          - generic [ref=e41]: 💻
+          - generic [ref=e42]:
+            - heading "Local Automation" [level=4] [ref=e43]
+            - paragraph [ref=e44]: PowerShell & CLI Tools
+        - generic [ref=e45]:
+          - generic [ref=e46]: 🌐
+          - generic [ref=e47]:
+            - heading "AI/CV Experiment" [level=4] [ref=e48]
+            - paragraph [ref=e49]: YOLO & TensorRT
+    - region "AI workflow reel" [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - generic [ref=e53]: System Reel
+          - heading "From Signals to Shipped Tools" [level=2] [ref=e54]
+          - paragraph [ref=e55]: 공개 데이터 수집, AI 처리, 검증, 자동화, 제품화까지 이어지는 흐름을 실행 가능한 시스템으로 엮습니다.
+        - generic "AI workflow and product building reel" [ref=e63]
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - heading "About Me" [level=2] [ref=e68]
+        - paragraph [ref=e69]: e스포츠 활동 중 경기 데이터와 패턴을 분석하던 경험에서 출발해, 지금은 AI와 데이터 자동화로 반복 문제를 줄이는 도구를 만드는 데 집중하고 있습니다.
+        - paragraph [ref=e70]: Neet2Work에서는 채용공고 수집, 문서 추출, AI 자기소개서 작성 흐름을 연결했고, Selfdex와 자동화 작업에서는 승인, 검증, 기록이 남는 실행 루프를 설계했습니다.
+        - paragraph [ref=e71]: React/Vite, Express, Spring Boot, Python ETL, PowerShell, GitHub Actions를 다루며 빠른 실험을 실제로 쓸 수 있는 풀스택 시스템으로 정리하는 개발을 지향합니다.
+      - generic [ref=e73]:
+        - generic [ref=e74]: ⚡
+        - heading "이성호" [level=3] [ref=e75]
+        - paragraph [ref=e76]: AI Workflow & Automation Full-stack Developer
+        - separator [ref=e77]
+        - list [ref=e78]:
+          - listitem [ref=e79]:
+            - generic [ref=e80]: Focus
+            - strong [ref=e81]: AI Workflow & Automation
+          - listitem [ref=e82]:
+            - generic [ref=e83]: Training
+            - strong [ref=e84]: Java/Spring, GenAI, AWS
+          - listitem [ref=e85]:
+            - generic [ref=e86]: GitHub
+            - strong [ref=e87]: r2gul4r
+          - listitem [ref=e88]:
+            - generic [ref=e89]: Philosophy
+            - strong [ref=e90]: "\"Try, verify, record\""
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - heading "Focus Areas" [level=2] [ref=e94]
+        - paragraph [ref=e95]: 로컬 실험에서 실제 서비스 흐름까지 이어지도록, 수집·AI·구현·검증을 한 사이클로 다룹니다.
+      - generic "문제 해결 파이프라인" [ref=e96]:
+        - article [ref=e100]:
+          - generic [ref=e102]: "01"
+          - generic [ref=e103]:
+            - generic [ref=e104]: Collect
+            - heading "Data Collection & ETL" [level=3] [ref=e105]
+            - paragraph [ref=e106]: 채용공고, 영화 상영 정보, 문서 본문처럼 흩어진 공개 데이터를 수집하고 표준 JSON과 DB 흐름으로 정규화합니다.
+            - generic "관련 키워드" [ref=e107]:
+              - generic [ref=e108]: Python ETL
+              - generic [ref=e109]: Prisma
+              - generic [ref=e110]: PostgreSQL
+        - article [ref=e111]:
+          - generic [ref=e113]: "02"
+          - generic [ref=e114]:
+            - generic [ref=e115]: Reason
+            - heading "AI Workflow Design" [level=3] [ref=e116]
+            - paragraph [ref=e117]: 사용자 경험을 먼저 구조화하고, 부족한 정보를 확인한 뒤, 근거가 연결된 초안과 리포트를 생성하는 AI 흐름을 설계합니다.
+            - generic "관련 키워드" [ref=e118]:
+              - generic [ref=e119]: prompt
+              - generic [ref=e120]: fallback
+              - generic [ref=e121]: evidence
+        - article [ref=e122]:
+          - generic [ref=e124]: "03"
+          - generic [ref=e125]:
+            - generic [ref=e126]: Build
+            - heading "Full-stack Product Dev" [level=3] [ref=e127]
+            - paragraph [ref=e128]: React/Vite 화면, Express·Spring Boot API, DB 마이그레이션을 연결해 데모가 아니라 끝까지 흐르는 기능을 만듭니다.
+            - generic "관련 키워드" [ref=e129]:
+              - generic [ref=e130]: React
+              - generic [ref=e131]: Express
+              - generic [ref=e132]: Spring Boot
+        - article [ref=e133]:
+          - generic [ref=e135]: "04"
+          - generic [ref=e136]:
+            - generic [ref=e137]: Automate
+            - heading "Automation & Review" [level=3] [ref=e138]
+            - paragraph [ref=e139]: PowerShell, CLI, Codex 작업 루프, 보안 리뷰 흐름을 묶어 승인·실행·검증·기록이 남는 도구를 구성합니다.
+            - generic "관련 키워드" [ref=e140]:
+              - generic [ref=e141]: PowerShell
+              - generic [ref=e142]: GitHub Actions
+              - generic [ref=e143]: Security
+    - generic [ref=e145]:
+      - generic [ref=e146]:
+        - heading "Skills System" [level=2] [ref=e147]
+        - paragraph [ref=e148]: 다양한 레이어에서 효율적인 해결책을 구성하기 위해 습득한 기술 스택입니다.
+      - generic "기술 스택 시스템 맵" [ref=e149]:
+        - article [ref=e150]:
+          - generic [ref=e151]:
+            - generic [ref=e152]: "01"
+            - heading "Interface Layer" [level=3] [ref=e153]
+          - generic [ref=e154]:
+            - generic [ref=e155]: HTML5
+            - generic [ref=e156]: CSS3
+            - generic [ref=e157]: JavaScript
+            - generic [ref=e158]: TypeScript
+            - generic [ref=e159]: React 19
+            - generic [ref=e160]: Vite 7
+            - generic [ref=e161]: Responsive UI
+            - generic [ref=e162]: Tailwind CSS
+        - article [ref=e163]:
+          - generic [ref=e164]:
+            - generic [ref=e165]: "02"
+            - heading "Service Layer" [level=3] [ref=e166]
+          - generic [ref=e167]:
+            - generic [ref=e168]: Node.js 24
+            - generic [ref=e169]: Express 5
+            - generic [ref=e170]: Java 21
+            - generic [ref=e171]: Spring Boot
+            - generic [ref=e172]: REST API
+            - generic [ref=e173]: Zod
+            - generic [ref=e174]: JPA
+        - article [ref=e175]:
+          - generic [ref=e176]:
+            - generic [ref=e177]: "03"
+            - heading "Data Layer" [level=3] [ref=e178]
+          - generic [ref=e179]:
+            - generic [ref=e180]: Python
+            - generic [ref=e181]: MySQL
+            - generic [ref=e182]: PostgreSQL
+            - generic [ref=e183]: TiDB
+            - generic [ref=e184]: Supabase
+            - generic [ref=e185]: Prisma
+            - generic [ref=e186]: Document Parsing
+            - generic [ref=e187]: ETL Pipeline
+        - article [ref=e188]:
+          - generic [ref=e189]:
+            - generic [ref=e190]: "04"
+            - heading "AI Layer" [level=3] [ref=e191]
+          - generic [ref=e192]:
+            - generic [ref=e193]: Prompt Engineering
+            - generic [ref=e194]: AI Routing
+            - generic [ref=e195]: Evidence Check
+            - generic [ref=e196]: YOLO
+            - generic [ref=e197]: ONNX
+            - generic [ref=e198]: TensorRT
+            - generic [ref=e199]: Ultralytics
+        - article [ref=e200]:
+          - generic [ref=e201]:
+            - generic [ref=e202]: "05"
+            - heading "Automation Layer" [level=3] [ref=e203]
+          - generic [ref=e204]:
+            - generic [ref=e205]: Git
+            - generic [ref=e206]: GitHub
+            - generic [ref=e207]: pnpm Workspace
+            - generic [ref=e208]: Docker Compose
+            - generic [ref=e209]: GitHub Actions
+            - generic [ref=e210]: PowerShell
+            - generic [ref=e211]: Electron
+            - generic [ref=e212]: AWS RDS/S3
+        - article [ref=e213]:
+          - generic [ref=e214]:
+            - generic [ref=e215]: "06"
+            - heading "Quality Layer" [level=3] [ref=e216]
+          - generic [ref=e217]:
+            - generic [ref=e218]: Vitest
+            - generic [ref=e219]: Playwright
+            - generic [ref=e220]: Validation Script
+            - generic [ref=e221]: Model Benchmark
+            - generic [ref=e222]: Documentation
+    - generic [ref=e224]:
+      - generic [ref=e225]:
+        - heading "Selected Projects" [level=2] [ref=e226]
+        - paragraph [ref=e227]: AI 작성 흐름, 자동화, 로컬 도구, 컴퓨터 비전 실험을 실제 작업으로 구현한 기록입니다.
+      - generic [ref=e228]:
+        - article [ref=e229]:
+          - generic [ref=e230]:
+            - heading "Neet2Work" [level=3] [ref=e231]
+            - paragraph [ref=e232]: 채용공고 탐색, 문서 추출, AI 자기소개서 작성 흐름을 연결한 취업 지원 서비스
+            - generic [ref=e233]:
+              - strong [ref=e234]: 주요 역할 및 기여
+              - paragraph [ref=e235]: 공고 수집 ETL, AI 작성 단계 설계, 첨부 문서 본문 추출, AI provider 라우팅과 fallback demo 경로, React/Express 기능 연결을 맡았습니다.
+            - generic [ref=e236]:
+              - generic [ref=e237]: React 19
+              - generic [ref=e238]: TypeScript
+              - generic [ref=e239]: Express 5
+              - generic [ref=e240]: Python
+              - generic [ref=e241]: Prisma
+              - generic [ref=e242]: AI Routing
+            - link "GitHub" [ref=e244] [cursor=pointer]:
+              - /url: https://github.com/rune5362/neet2work
+          - generic [ref=e245]:
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Job Data
+                  - generic: Evidence
+                  - generic: Draft
+        - article [ref=e246]:
+          - generic [ref=e247]:
+            - heading "goalplz" [level=3] [ref=e248]
+            - paragraph [ref=e249]: 거친 요청을 감사 가능한 Goal mode 목표로 바꾸는 Codex skill과 /goalplz 프롬프트
+            - generic [ref=e250]:
+              - strong [ref=e251]: 주요 역할 및 기여
+              - paragraph [ref=e252]: 목표 문장, 성공 기준, 제약, 검증 관점을 한 번에 정리해 Codex 작업을 추적 가능한 실행 단위로 고정하는 흐름을 설계했습니다.
+            - generic [ref=e253]:
+              - generic [ref=e254]: Codex Skill
+              - generic [ref=e255]: Codex
+              - generic [ref=e256]: Goal Mode
+              - generic [ref=e257]: Workflow
+              - generic [ref=e258]: Prompt Design
+              - generic [ref=e259]: Verification
+            - link "GitHub" [ref=e261] [cursor=pointer]:
+              - /url: https://github.com/r2gul4r/goalplz
+          - generic [ref=e262]:
+            - generic:
+              - figure:
+                - generic:
+                  - generic: 요청 입력
+                  - generic: 목표 고정
+                  - generic: 검증 기준
+        - article [ref=e263]:
+          - generic [ref=e264]:
+            - heading "photoEditer" [level=3] [ref=e265]
+            - paragraph [ref=e266]: RAW 사진 분석부터 보정 후보, 미리보기, JPEG/PNG export까지 이어지는 로컬 사진 보정 추천 도구
+            - generic [ref=e267]:
+              - strong [ref=e268]: 주요 역할 및 기여
+              - paragraph [ref=e269]: 히스토그램 기반 이미지 분석, 스타일 목표 해석, 로컬 preview/export 흐름, Python 백엔드와 React UI, Windows용 설치 CLI를 구성했습니다.
+            - generic [ref=e270]:
+              - generic [ref=e271]: React
+              - generic [ref=e272]: TypeScript
+              - generic [ref=e273]: FastAPI
+              - generic [ref=e274]: NumPy
+              - generic [ref=e275]: Pillow
+              - generic [ref=e276]: CLI
+            - link "GitHub" [ref=e278] [cursor=pointer]:
+              - /url: https://github.com/r2gul4r/photoEditer
+        - article [ref=e280]:
+          - generic [ref=e281]:
+            - heading "YOLO CV Experiment" [level=3] [ref=e282]
+            - paragraph [ref=e283]: YOLO 기반 객체 인식 모델을 커스텀 데이터셋으로 학습하고 로컬 추론 성능을 실험한 컴퓨터 비전 작업
+            - generic [ref=e284]:
+              - strong [ref=e285]: 주요 역할 및 기여
+              - paragraph [ref=e286]: 타겟/비타겟 라벨링 데이터셋 구성, 1차 모델 기반 오토라벨링, 노이즈·블러 augmentation, 저학습률 파인튜닝, ONNX/TensorRT 변환과 추론 환경 셋업을 진행했습니다.
+            - generic [ref=e287]:
+              - generic [ref=e288]: YOLO
+              - generic [ref=e289]: Python
+              - generic [ref=e290]: Ultralytics
+              - generic [ref=e291]: ONNX
+              - generic [ref=e292]: TensorRT
+          - generic [ref=e293]:
+            - generic:
+              - figure
+      - generic "Project Archive" [ref=e294]:
+        - generic [ref=e295]:
+          - generic [ref=e296]:
+            - generic [ref=e297]: Project Archive
+            - heading "Other Builds & Experiments" [level=3] [ref=e298]
+          - paragraph [ref=e299]: 다양한 실험, 개발 기록들이 보관되어 있습니다.
+        - generic [ref=e300]:
+          - link "Data daboyeo CGV, 롯데시네마, 메가박스 상영 데이터를 수집하고 비교 가능한 구조로 정리하는 도구 Vanilla JS / Collector / Data Model" [ref=e301] [cursor=pointer]:
+            - /url: https://github.com/r2gul4r/daboyeo
+            - generic [ref=e302]: Data
+            - strong [ref=e303]: daboyeo
+            - paragraph [ref=e304]: CGV, 롯데시네마, 메가박스 상영 데이터를 수집하고 비교 가능한 구조로 정리하는 도구
+            - generic [ref=e305]: Vanilla JS / Collector / Data Model
+          - link "Automation money-agent 후보 탐색부터 로컬 검증과 제출 준비까지 이어지는 승인 기반 작업 루프 Workflow / Security Gate / Logs" [ref=e306] [cursor=pointer]:
+            - /url: https://github.com/r2gul4r/autowork
+            - generic [ref=e307]: Automation
+            - strong [ref=e308]: money-agent
+            - paragraph [ref=e309]: 후보 탐색부터 로컬 검증과 제출 준비까지 이어지는 승인 기반 작업 루프
+            - generic [ref=e310]: Workflow / Security Gate / Logs
+          - link "Codex selfdex Codex 작업을 선택, 승인, 검증, 기록까지 통제하는 프로젝트 세션 오케스트레이션 도구 Node CLI / Workflow / Evidence" [ref=e311] [cursor=pointer]:
+            - /url: https://github.com/r2gul4r/selfdex
+            - generic [ref=e312]: Codex
+            - strong [ref=e313]: selfdex
+            - paragraph [ref=e314]: Codex 작업을 선택, 승인, 검증, 기록까지 통제하는 프로젝트 세션 오케스트레이션 도구
+            - generic [ref=e315]: Node CLI / Workflow / Evidence
+          - generic [ref=e316]:
+            - generic [ref=e317]: Vision
+            - strong [ref=e318]: YOLO Model Runs
+            - paragraph [ref=e319]: 학습된 YOLO 모델을 ONNX와 TensorRT로 변환하고 로컬 추론 결과를 비교한 실험 기록
+            - generic [ref=e320]: YOLO / ONNX / TensorRT
+          - generic [ref=e321]:
+            - generic [ref=e322]: Desktop
+            - strong [ref=e323]: MQYusimeji
+            - paragraph [ref=e324]: Shimeji-ee 엔진과 커스텀 이미지셋을 통합한 런처, 스프라이트, 패키징 실험
+            - generic [ref=e325]: Java / PowerShell / Windows Packaging
+    - generic [ref=e327]:
+      - generic [ref=e329]:
+        - generic [ref=e330]: Email
+        - heading "Contact Connection" [level=2] [ref=e331]
+        - paragraph [ref=e332]: 프로젝트, 협업, 자동화 아이디어를 빠르게 이어갈 수 있습니다.
+        - generic [ref=e333]:
+          - generic [ref=e334]: leflex0821@gmail.com
+          - button "이메일 주소 클립보드에 복사" [ref=e335] [cursor=pointer]: Copy Email
+      - generic [ref=e337]:
+        - generic [ref=e338]: GitHub
+        - heading "Open Source Trace" [level=2] [ref=e339]
+        - paragraph [ref=e340]: 작게 실험하고, 필요한 도구를 만들고, 기록으로 남깁니다.
+        - link "Visit GitHub" [ref=e341] [cursor=pointer]:
+          - /url: https://github.com/r2gul4r
+          - img [ref=e342]
+          - text: Visit GitHub
+  - contentinfo [ref=e344]:
+    - generic [ref=e345]:
+      - generic [ref=e346]:
+        - generic [ref=e347]: Sungho Lee
+        - generic [ref=e348]:
+          - generic [ref=e349] [cursor=pointer]: Home
+          - generic [ref=e350] [cursor=pointer]: About
+          - generic [ref=e351] [cursor=pointer]: Projects
+          - generic [ref=e352] [cursor=pointer]: Contact
+      - separator [ref=e353]
+      - generic [ref=e354]:
+        - generic [ref=e355]: © 2026 Sungho Lee. All rights reserved.
+        - generic [ref=e356]:
+          - generic [ref=e357]: leflex0821@gmail.com
+          - generic [ref=e358]: "|"
+          - link "010-5067-7916" [ref=e359] [cursor=pointer]:
+            - /url: tel:+821050677916
+          - generic [ref=e360]: "|"
+          - link "GitHub" [ref=e361] [cursor=pointer]:
+            - /url: https://github.com/r2gul4r
+  - generic: 이메일 주소가 클립보드에 복사되었습니다.
